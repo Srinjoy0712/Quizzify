@@ -1,0 +1,208 @@
+- model: sim.quiz
+  pk: 2
+  fields:
+    name: Django Basics
+
+- model: sim.question
+  pk: 11
+  fields:
+    quiz: 2
+    text: What is Django?
+
+- model: sim.answer
+  pk: 41
+  fields:
+    question: 11
+    text: A high-level Python web framework
+    is_correct: true
+
+- model: sim.answer
+  pk: 42
+  fields:
+    question: 11
+    text: A type of database
+    is_correct: false
+
+- model: sim.answer
+  pk: 43
+  fields:
+    question: 11
+    text: A JavaScript library
+    is_correct: false
+
+- model: sim.answer
+  pk: 44
+  fields:
+    question: 11
+    text: A web browser
+    is_correct: false
+
+- model: sim.question
+  pk: 12
+  fields:
+    quiz: 2
+    text: Which command is used to start a new Django project?
+
+- model: sim.answer
+  pk: 45
+  fields:
+    question: 12
+    text: django-admin startproject projectname
+    is_correct: true
+
+- model: sim.answer
+  pk: 46
+  fields:
+    question: 12
+    text: django startproject projectname
+    is_correct: false
+
+- model: sim.answer
+  pk: 47
+  fields:
+    question: 12
+    text: django-admin createproject projectname
+    is_correct: false
+
+- model: sim.answer
+  pk: 48
+  fields:
+    question: 12
+    text: django createproject projectname
+    is_correct: false
+
+- model: sim.question
+  pk: 13
+  fields:
+    quiz: 2
+    text: What is the purpose of the settings.py file in a Django project?
+
+- model: sim.answer
+  pk: 49
+  fields:
+    question: 13
+    text: To define the project’s configuration
+    is_correct: true
+
+- model: sim.answer
+  pk: 50
+  fields:
+    question: 13
+    text: To create models for the database
+    is_correct: false
+
+- model: sim.answer
+  pk: 51
+  fields:
+    question: 13
+    text: To handle HTTP requests
+    is_correct: false
+
+- model: sim.answer
+  pk: 52
+  fields:
+    question: 13
+    text: To define URL routes
+    is_correct: false
+
+- model: sim.question
+  pk: 14
+  fields:
+    quiz: 2
+    text: Which file is used to define URL routes in a Django project?
+
+- model: sim.answer
+  pk: 53
+  fields:
+    question: 14
+    text: urls.py
+    is_correct: true
+
+- model: sim.answer
+  pk: 54
+  fields:
+    question: 14
+    text: views.py
+    is_correct: false
+
+- model: sim.answer
+  pk: 55
+  fields:
+    question: 14
+    text: models.py
+    is_correct: false
+
+- model: sim.answer
+  pk: 56
+  fields:
+    question: 14
+    text: settings.py
+    is_correct: false
+
+- model: sim.question
+  pk: 15
+  fields:
+    quiz: 2
+    text: How do you create a new app in a Django project?
+
+- model: sim.answer
+  pk: 57
+  fields:
+    question: 15
+    text: python manage.py startapp appname
+    is_correct: true
+
+- model: sim.answer
+  pk: 58
+  fields:
+    question: 15
+    text: python manage.py createapp appname
+    is_correct: false
+
+- model: sim.answer
+  pk: 59
+  fields:
+    question: 15
+    text: django-admin startapp appname
+    is_correct: false
+
+- model: sim.answer
+  pk: 60
+  fields:
+    question: 15
+    text: django startapp appname
+    is_correct: false
+
+- model: sim.question
+  pk: 16
+  fields:
+    quiz: 2
+    text: Which Django component is responsible for rendering HTML templates?
+
+- model: sim.answer
+  pk: 61
+  fields:
+    question: 16
+    text: Views
+    is_correct: true
+
+- model: sim.answer
+  pk: 62
+  fields:
+    question: 16
+    text: Models
+    is_correct: false
+
+- model: sim.answer
+  pk: 63
+  fields:
+    question: 16
+    text: Templates
+    is_correct: false
+
+- model: sim.answer
+  pk: 64
+  fields:
+    question: 16
+    text: Middleware
+    is_correct: false

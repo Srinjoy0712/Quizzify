@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Start Your Quiz</title>
+  <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #333;
+      line-height: 1;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #topic-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #topic-list {
+      padding: 20px;
+    }
+
+    #question-form {
+      padding: 20px;
+    }
+
+    .option {
+      border-radius: 10px;
+    }
+
+    .option input[type="radio"] {
+      display: none; 
+    }
+
+    .option label {
+      display: block;
+      padding: 15px 20px;
+      background-color: #f0f0f0;
+      border-radius: 10px;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      font-size: 18px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .option label:hover {
+      background-color: #ddd;
+      transform: scale(1.02);
+    }
+
+    .option input[type="radio"]:checked + label {
+      background-color: #2575fc;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #heading-text {
+      margin: 20px 0;
+      font-size: 24px;
+      color: #000000;
+    }
+
+    .btn {
+      background-color: #6a11cb;
+      color: #fff;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      font-size: 18px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:hover {
+      background-color: #500aab;
+      transform: scale(1.05);
+    }
+
+    h1 {
+      color: #000000;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <form id="topic-container" hx-post="{% url 'get-questions' %}/start">
+    {% csrf_token %}
+    <h1>WELCOME TO QUIZZIFY</h1>
+    <h2 id="heading-text">What would you like to learn about?</h2>
+    <div id="topic-list">
+      <p>Please pick a topic from the list below:</p>
+      <ol style="list-style-type: none; padding: 0;">
+        {% for topic in topics %}
+        <li class="option">
+          <input type="radio" id="topic-{{ forloop.counter0 }}" value="{{ topic.id }}" name="quiz_id" required>
+          <label for="topic-{{ forloop.counter0 }}">{{ topic.name }} ({{ topic.questions_count }} questions)</label>
+        </li>
+        {% endfor %}
+        {% if not topics %}
+        <li>No topics available. Have you added topics into your database?</li>
+        {% endif %}
+      </ol>
+      <button class="btn" type="submit">Start Your Quiz</button>
+    </div>
+  </form>
+</body>
+</html>
